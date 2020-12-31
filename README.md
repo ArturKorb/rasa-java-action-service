@@ -1,1 +1,1 @@
-# rasa-java-bridge-action-server
+# rasa-java-action-service
