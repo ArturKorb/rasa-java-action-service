@@ -1,0 +1,73 @@
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'application'
+
+
+buildscript {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2" }
+        mavenCentral()
+        //jcenter()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:2.4.1')
+    }
+}
+
+repositories {
+    jcenter()
+}
+sourceSets {
+    main.java.srcDirs = ['src/main/java']
+}
+
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+install {
+    repositories.mavenInstaller {
+        pom.artifactId = 'rasa-java-action-service'
+    }
+}
+
+task execute(type: JavaExec) {
+    main = System.getProperty('mainClass')
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+/*springBoot {
+    buildInfo {
+        properties {
+            group = "io.github.arturik.actionserver"
+            name = "rasa-java-action-service"
+            version = "0.1.0"
+        }
+    }
+}*/
+
+group 'io.github.arturik.actionserver'
+version '0.1.0'
+
+dependencies {
+    implementation('io.swagger:swagger-annotations:1.5.24')
+    implementation('io.github.rbajek:rasa-java-sdk:1.0.1')
+    implementation('org.springframework.boot:spring-boot-starter-web:2.4.1')
+    configurations {
+        compile.exclude group: "org.springframework.boot", module: 'spring-boot-starter-logging'
+    }
+
+
+}
+
+mainClassName = "io.github.arturik.actionserver.RasaActionServer"
+javadoc {
+    options.tags = ["http.response.details:a:Http Response Details"]
+}

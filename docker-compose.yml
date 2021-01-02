@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  rasa:
+    image: rasa/rasa:2.2.2-full
+    container_name: rasa_server
+    user: root
+    ports:
+      - 5005:5005
+    volumes:
+      - rasabot-content:/app
+    command:
+      [ "run", "--enable-api", "--log-file", "out.log" ]
+  actionservice:
+    build:
+      context: .
+      args:
+        - version=0.1.0
+    image: rasa-action-server:0.1.0
+    container_name: action_server
+    expose: [ 5055 ]
+    volumes:
+      - rasabot-content:/app/rasabot
+volumes:
+  rasabot-content:
+
