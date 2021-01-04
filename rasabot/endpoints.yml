@@ -11,11 +11,11 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 action_endpoint:
-  url: "http://actionservice:5055/webhook"
+# url: "http://actionservice:5055/webhook"
 
 # Use the following endpoint during local development your action server and debugging.
 # In this case uncomment the above action server url and start your environment again with docker compose.
-# url: "http://host.docker.internal:5055/webhook"
+ url: "http://host.docker.internal:5055/webhook"
 
 # Tracker store which is used to store the conversations.
 # By default the conversations are stored in memory.
