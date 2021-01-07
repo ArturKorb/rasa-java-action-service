@@ -1,0 +1,8 @@
+FROM rasa/rasa:2.2.2-full
+WORKDIR /app
+USER root
+COPY rasabot/app.py /app/
+RUN pip install flask flask_shell2http
+EXPOSE 4000
+ENTRYPOINT ["/usr/bin/env"]
+CMD bash -c "python app.py & rasa run --enable-api --log-file out.log"

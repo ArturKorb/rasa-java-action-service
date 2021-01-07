@@ -1,12 +1,14 @@
-version: '3.3'
+version: '3.9'
 services:
-  rasa_dev:
-    image: rasa/rasa:2.2.2-full
+  rasa:
+    build:
+      context: .
+      dockerfile: DockerRasaS2H
+    image: arturik/rasas2h:0.1.0
     container_name: rasa_server_dev
     user: root
     ports:
-      - 5005:5005
+      - "5005:5005"
+      - "4000:4000"
     volumes:
       - ./rasabot:/app
-    command:
-      [ "run", "--enable-api", "--log-file", "out.log" ]
