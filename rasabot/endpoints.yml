@@ -11,17 +11,16 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 action_endpoint:
-# Use this endpoint if you want to deploy your bot using the 'docker-compose.yml' file of this project.
-# command: 'docker-compose up -d'
-  url: "http://actionservice:5055/webhook"
-
 # Use the following endpoints during local development and debugging your action server.
-# In this case comment the above action server url, uncomment one of the following and start your environment with
 # command: 'docker-compose -f docker-compose.develop.yml up -d'
 
-# url: "http://host.docker.internal:5055/webhook"
+ url: "http://host.docker.internal:5055/webhook"
 # if you use Docker Tool Box:
 # url: "http://<your local IP>:5055/webhook"
+
+# Use this endpoint if you want to deploy your bot using the 'docker-compose.yml' file of this project.
+# command: 'docker-compose up -d'
+#  url: "http://actionservice:5055/webhook"
 
 
 
