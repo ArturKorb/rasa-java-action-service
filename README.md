@@ -50,8 +50,8 @@ The **rasa-java-action-service** comes with an initial configuration of all comp
 - the `rasabot` folder contains an initial set of files which you can use as starting point to [build your Rasa Assistant](https://rasa.com/docs/rasa/playground)
 - type now `docker exec -it rasa_server_dev bash` to get the shell of the container
 - type `rasa train` in the container shell
-  - this will train a Rasa model based on the content of the '.yml' files in the `rasabot` folder
-  - the '.yml' files are initially prefilled with content for a sample bot 
+  - this will train a Rasa model based on the content of the `.yml` files in the `rasabot` folder
+  - the `.yml` files are initially prefilled with content for a sample bot 
   - the sample bot is an extended Rasa 'mood bot' which asks how you are and tries to cheer you up if you feel bad. 
 - start the `RasaActionServer` (within IDE or after build with`java -jar`). The Action Server listens per default on port `5055`, see `application.properties`
   - initially the `RasaActionServer` contains the sample Action `ActionSample` which retrieves a joke though an API call
@@ -92,7 +92,7 @@ public class ActionSample implements Action {
 
 }
 ```
-See also the sample Action `ActionSmaple` in the `actions` package.
+See also the sample Action `ActionSample` in the `actions` package.
 
 - for local development just edit the `.yml` files in the `rasabot` folder.
 - afterwards you need to re-train your bot. See [start section](#Start) how to train the bot and start a conversation within the Rasa Shell.
@@ -107,7 +107,7 @@ You can deploy your Action Server everywhere where you have Docker and Docker Co
 - type in the command line: `docker-compose up -d`. This will result in the following steps:
     - a multi-stage image build for the Action Server will be triggered and the `action_server` container will be started listening on exposed port `5055`
     - a multi-stage image build for an extended Rasa environment will be triggered and the `rasa_server` container will be started listening on exposed port `5005`
-    - within the `rasa_server` container a flask application will be started listening on exposed port 4000. Attention! This is only experimental 
+    - within the `rasa_server` container a flask application will be started listening on exposed port `4000`. Attention! This is only experimental 
       and can be used to control the Rasa CLI through an API endpoint.
     - `action_server` and `rasa_server` are connected with a shared named volume. You see the same contents in `/app` directory of `rasa_server`
        and `/app/rasabot` directory of `action_server`
@@ -126,9 +126,9 @@ If you want to build your Rasa assistant with **Java** you can use the [rasa-jav
   
 ## Experimental
 
-Within the `rasa_server` container a flask application will be started listening on exposed port 4000. Attention! This is only experimental!
+Within the `rasa_server` container a flask application will be started listening on exposed port `4000`. Attention! This is only experimental!
 The flask server provides an Endpoint called `http://localhost:4000/commands/rasa` and can be used to control Rasa by requesting 
-[Rasa CLI](https://rasa.com/docs/rasa/command-line-interface) commands. Interactive commands like `rasa shell` or `rasa interactive` don't work.
+[Rasa CLI](https://rasa.com/docs/rasa/command-line-interface) commands. Interactive commands like `rasa shell` or `rasa interactive` won't work.
 
 ### Usage
 
