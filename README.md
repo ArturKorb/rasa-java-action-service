@@ -39,7 +39,7 @@ executed, it calls the Action Server which executes the Action thereupon and res
 
 ## Usage
 
-The **rasa-java-action-service** provides an initial set_up configuration which makes a quick development start possible.
+The **rasa-java-action-service** provides an initial set-up configuration which makes a quick development start possible.
 
 ### Start
 - clone this repo
